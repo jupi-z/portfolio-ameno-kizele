@@ -17,6 +17,6 @@ Pages principales : accueil, projets, six études de cas, parcours, méthode et 
 - `src/components/` — navigation, pied de page, sections partagées et formulaire
 - `src/data/projects.ts` — contenu des études de cas
 - `public/figma-assets/` — ressources originales exportées de Figma
-- `figma-exports/` — 63 planches de référence au format SVG, nommées avec leur identifiant Figma
+- `figma-exports/` — 73 planches et composants de référence au format SVG, nommés avec leur identifiant Figma
 
 L’index et les identifiants des exports sont dans [`figma-exports/README.md`](figma-exports/README.md). Les captures SVG sont des documents de référence ; les ressources intégrées au site sont conservées séparément dans `public/figma-assets/`.
