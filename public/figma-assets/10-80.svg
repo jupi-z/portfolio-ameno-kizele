@@ -1,0 +1,46 @@
+<svg width="800" height="310" viewBox="0 0 800 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="310" fill="#E5E5E5"/>
+<g id="H01 &#226;&#128;&#148; Accueil / 1440">
+<rect width="1440" height="5996.2" transform="translate(-80 -1197)" fill="white"/>
+<g id="&#195;&#128; propos / approche">
+<rect width="1440" height="822" transform="translate(-80 -432)" fill="#F1F3F5"/>
+<g id="Approche / contrastes">
+<g id="Signature / syst&#195;&#168;me">
+<g clip-path="url(#clip0_0_1)">
+<path d="M0 24C0 10.7452 10.7452 0 24 0H776C789.255 0 800 10.7452 800 24V286C800 299.255 789.255 310 776 310H24C10.7451 310 0 299.255 0 286V24Z" fill="#14171C"/>
+<g id="D&#195;&#169;cor / courbes topographiques" opacity="0.6" clip-path="url(#clip1_0_1)">
+<g id="Group">
+<path id="Vector" d="M-80 -80C160 300 280 -300 480 -5.34058e-05C680 300 760 320 880 -10.0001" stroke="#285CE6"/>
+<path id="Vector_2" d="M-80 -62C160 318 280 -282 480 17.9999C680 318 760 338 880 7.99995" stroke="#285CE6"/>
+<path id="Vector_3" d="M-80 -44C160 336 280 -264 480 35.9999C680 336 760 356 880 25.9999" stroke="#285CE6"/>
+<path id="Vector_4" d="M-80 -26C160 354 280 -246 480 53.9999C680 354 760 374 880 43.9999" stroke="#285CE6"/>
+<path id="Vector_5" d="M-80 -8.00005C160 372 280 -228 480 71.9999C680 372 760 392 880 61.9999" stroke="#285CE6"/>
+<path id="Vector_6" d="M-80 9.99995C160 390 280 -210 480 89.9999C680 390 760 410 880 79.9999" stroke="#285CE6"/>
+<path id="Vector_7" d="M-80 28C160 408 280 -192 480 108C680 408 760 428 880 97.9999" stroke="#285CE6"/>
+<path id="Vector_8" d="M-80 46C160 426 280 -174 480 126C680 426 760 446 880 116" stroke="#285CE6"/>
+<path id="Vector_9" d="M-80 64C160 444 280 -156 480 144C680 444 760 464 880 134" stroke="#285CE6"/>
+<path id="Vector_10" d="M-80 82C160 462 280 -138 480 162C680 462 760 482 880 152" stroke="#285CE6"/>
+<path id="Vector_11" d="M-80 100C160 480 280 -120 480 180C680 480 760 500 880 170" stroke="#285CE6"/>
+<path id="Vector_12" d="M-80 118C160 498 280 -102 480 198C680 498 760 518 880 188" stroke="#285CE6"/>
+<path id="Vector_13" d="M-80 136C160 516 280 -84.0001 480 216C680 516 760 536 880 206" stroke="#285CE6"/>
+<path id="Vector_14" d="M-80 154C160 534 280 -66.0001 480 234C680 534 760 554 880 224" stroke="#285CE6"/>
+<path id="Vector_15" d="M-80 172C160 552 280 -48.0001 480 252C680 552 760 572 880 242" stroke="#285CE6"/>
+<path id="Vector_16" d="M-80 190C160 570 280 -30.0001 480 270C680 570 760 590 880 260" stroke="#285CE6"/>
+<path id="Vector_17" d="M-80 208C160 588 280 -12.0001 480 288C680 588 760 608 880 278" stroke="#285CE6"/>
+<path id="Vector_18" d="M-80 226C160 606 280 5.99995 480 306C680 606 760 626 880 296" stroke="#285CE6"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<path d="M0 24C0 10.7452 10.7452 0 24 0H776C789.255 0 800 10.7452 800 24V286C800 299.255 789.255 310 776 310H24C10.7451 310 0 299.255 0 286V24Z" fill="white"/>
+</clipPath>
+<clipPath id="clip1_0_1">
+<rect width="800" height="310" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/ameno-portfolio/
 /.pnp
 .pnp.*
 .yarn/*
@@ -39,3 +40,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+/figma-exports/*-map.json

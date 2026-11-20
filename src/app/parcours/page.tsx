@@ -1,0 +1,11 @@
+import Image from "next/image";
+import { ActionLink, Eyebrow, PageShell } from "@/components/site";
+
+const roles = [
+  ["2024 — aujourd’hui", "MonarQue Group / LTEX", "Software Engineer", "Conception de systèmes métier, développement backend et applications web pour les équipes opérationnelles."],
+  ["2023 — 2024", "Zingatia", "Développement produit", "Développement d’outils numériques et contribution à des parcours pensés depuis les usages."],
+  ["2021 — aujourd’hui", "Développement indépendant", "Missions rémunérées · Kolwezi / à distance", "Des missions locales et à distance, du besoin initial à la livraison."],
+  ["2020 — 2021", "INNOVAC", "Frontend junior · formation pratique rémunérée", "Premières expériences de développement web en équipe et apprentissage de la livraison produit."],
+];
+
+export default function JourneyPage() { return <PageShell active="Parcours"><section className="journey-intro"><div><Eyebrow>Ameno Kizele Mwine</Eyebrow><h1>Une pratique<br /><em>sur le terrain.</em></h1><p className="lead">Backend · Web · Android</p><p>Je construis des logiciels utiles à partir des réalités métier : leurs règles, leurs personnes et les contextes de travail.</p></div><div className="journey-photo"><Image src="/figma-assets/asset_11-1130_0.png" alt="Portrait d’Ameno Kizele" width={500} height={500} /><span>Des idées aux usages.</span></div></section><section className="journey-experience section-wash"><div className="section-container"><Eyebrow>Une pratique sur le terrain</Eyebrow><h2>Expériences</h2><div className="timeline">{roles.map(([date,company,title,desc])=><article key={company}><span className="timeline-date">{date}</span><div><h3>{company}</h3><p className="role-title">{title}</p><p>{desc}</p></div><span className="timeline-node" /></article>)}</div></div></section><section className="education"><div><Eyebrow>Apprendre &amp; communiquer</Eyebrow><h2>Continuer à apprendre,<br />partager clairement.</h2><p>Mon parcours se construit dans la pratique, l’apprentissage continu et le travail au contact d’équipes métier.</p><ActionLink href="/contact?subject=cv">Demander mon CV</ActionLink></div><div className="learning-art"><span>APPRENDRE</span><b>↗</b><i>✳</i></div></section></PageShell>; }

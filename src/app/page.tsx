@@ -1,69 +1,23 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { ActionLink, Eyebrow, PageShell, ProjectArt } from "@/components/site";
+import { projects } from "@/data/projects";
+
+const expertise = ["Backend & API", "Web & Android", "Données & cohérence", "Accès & traçabilité", "Livraison & maintenance", "Coordination technique"];
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <PageShell active="Accueil">
+    <section className="hero"><div className="hero-layout"><div className="hero-copy"><Eyebrow>Ameno Kizele · Software Engineer</Eyebrow><h1>DU MÉTIER<br /><em>AU LOGICIEL.</em><br /><span>AVEC INTENTION.</span></h1><div className="hero-description"><p>Je développe des API et des applications métier, du cadrage au déploiement.</p><ActionLink href="/projets">Explorer mes projets</ActionLink><Link className="text-link" href="/parcours">Mon parcours &amp; mon CV <span>↗</span></Link></div></div><div className="portrait"><div className="portrait-block" /><div className="portrait-disc" /><div className="portrait-orange" /><Image src="/figma-assets/asset_10-2_0.png" alt="Portrait d’Ameno Kizele" width={430} height={440} priority className="portrait-photo" /><span className="portrait-tag">Des idées aux usages.</span><span className="portrait-role">Backend · Web · Android</span><span className="portrait-star">✳</span><span className="portrait-star small">✳</span></div></div><div className="signature">{["Backend & API", "Web", "Android natif", "Systèmes métier"].map((x)=><span key={x}><b>✳</b>{x}</span>)}</div></section>
+
+    <section className="about section-wash"><div className="section-container"><div className="about-top"><div><Eyebrow>Le point de départ</Eyebrow><h2>Comprendre l’usage.<br />Construire le bon système.</h2></div><div className="about-columns"><p className="lead">Je relie les besoins opérationnels aux décisions techniques, du cadrage au déploiement.</p><div><p>Mon travail associe backend, données, interfaces web et Android, avec une attention aux règles métier et à la maintenance.</p><Link className="under-link" href="/parcours">Mon parcours en détail <span>↗</span></Link></div></div></div><div className="about-panels"><article><span>Du besoin<br />à la livraison.</span><div className="panel-tags"><b>Architecture</b><b>Interfaces</b><b>Exploitation</b></div><i aria-hidden="true">〰</i></article><article><span>Une pratique<br />de bout en bout.</span><p>Des décisions aux interfaces, puis une lecture continue de l’expérience.</p><i>✳</i></article></div></div></section>
+
+    <section className="method-preview"><div className="section-container"><Eyebrow>Comment je travaille</Eyebrow><div className="method-showcase"><div className="method-lead"><h2>Du besoin<br />à la livraison.</h2><p>Comprendre avant de construire. Clarifier les règles. Puis vérifier ce qui compte dans l’usage.</p><Image src="/figma-assets/8-83.svg" alt="Illustration d’une personne en train de lire" width={260} height={240} /></div><div className="method-notes">{[["01","Comprendre","Clarifier le besoin et les personnes concernées."],["02","Structurer","Rendre les règles et les flux lisibles."],["03","Construire","Développer par étapes, au plus près des usages."],["04","Vérifier & livrer","Contrôler les résultats et documenter les limites."]].map(([n,t,d])=><article key={n}><span>{n}</span><h3>{t}</h3><p>{d}</p><b>↗</b></article>)}</div></div><Link className="method-more" href="/methode">Chaque étape sert l’usage. <span>Découvrir ma méthode ↗</span></Link></div></section>
+
+    <section className="expertise expertise-dark"><div className="section-container"><Eyebrow dark>Ce que je fais</Eyebrow><h2>Des systèmes pensés<br />pour être utilisés.</h2><p className="expertise-intro">Une démarche backend &amp; API, avec une exigence de cohérence.</p><div className="expertise-grid">{expertise.map((x,i)=><div key={x}><span>0{i+1}</span><h3>{x}</h3><p>{["TypeScript, Rust, Express et NestJS pour des règles métier lisibles.","Des interfaces utiles, web et Android, pour les personnes qui travaillent.","PostgreSQL, Prisma, règles métier : préserver les états et les transitions.","Permissions explicites, audit et refus sûr côté backend.","CI, Docker, migrations et documentation pour exploiter le système.","Relier équipes, choix techniques et contraintes métier."][i]}</p><b>↗</b></div>)}</div></div></section>
+
+    <section className="projects-preview"><div className="section-container"><div className="section-heading"><div><Eyebrow>Quelques réalisations</Eyebrow><h2>Le travail,<br />côté concret.</h2><p>Trois projets pour entrer dans ma pratique : produit, règles métier et backend public.</p></div><Link className="under-link" href="/projets">Explorer les six projets <span>↗</span></Link></div><div className="project-grid featured-grid">{projects.slice(0,3).map((p,i)=><Link href={`/projets/${p.slug}`} className="project-card" key={p.slug}><div className="featured-art"><Image src={`/figma-assets/28-${[889,915,943][i]}.svg`} alt="" width={405} height={243} /><span>↗</span></div><div className="project-title"><h3>{p.title}</h3><b>↗</b></div><p>{p.summary}</p><small>{p.status}</small></Link>)}</div></div></section>
+
+    <section className="posture"><div className="section-container posture-inner"><Image src="/figma-assets/8-3.svg" alt="Illustration d’une personne en lévitation" width={480} height={360} /><div><Eyebrow>Une même exigence</Eyebrow><h2>La qualité se voit.<br />La rigueur aussi.</h2><p>Relier les parcours fiables, documenter les choix et maintenir le périmètre réel de chaque projet.</p><Link className="under-link" href="/methode">Découvrir ma méthode <span>↗</span></Link></div></div></section>
+  </PageShell>;
 }
+
