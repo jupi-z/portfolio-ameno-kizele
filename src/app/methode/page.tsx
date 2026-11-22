@@ -1,6 +1,19 @@
-import { ActionLink, Eyebrow, PageShell } from "@/components/site";
+import Image from "next/image";
+import { Eyebrow, MethodRoadmap, PageShell } from "@/components/site";
 
-const steps = [["01","Comprendre","Clarifier le besoin, les personnes concernées et les contraintes réelles."],["02","Structurer","Rendre visibles les règles métier, les flux et les choix d’architecture."],["03","Construire","Développer par étapes et vérifier les comportements qui comptent."],["04","Faire évoluer","Documenter les limites, observer l’usage et préparer la suite."]];
-const fields = [["Backend & API","Des contrats lisibles et des règles métier vérifiées."],["Web & Android","Des interfaces accessibles sur le poste de travail et sur le terrain."],["Données & cohérence","Des calculs, états et transitions qui restent fiables."],["Accès & traçabilité","Des permissions explicites et des décisions compréhensibles."],["Livraison & maintenance","Des mises en production préparées et un service exploitable."],["Coordination technique","Un fil commun entre équipes, produit et contraintes métier."]];
+const fields = [
+  ["Backend & API", "TypeScript, NestJS, Express et Kotlin/Ktor. Des contrats explicites et des règles métier."],
+  ["Web & Android", "React, Next.js et Kotlin natif. Relier les parcours aux données."],
+  ["Données & cohérence", "PostgreSQL, Prisma, migrations et transactions. Structurer les états et les transitions."],
+  ["Accès & traçabilité", "Permissions, sessions et audit. Clarifier ce qui peut être fait, par qui et dans quel contexte."],
+  ["Livraison & maintenance", "Linux, Docker, Nginx et déploiement. Préparer le fonctionnement après la livraison."],
+  ["Coordination technique", "Relier cadrage, choix techniques et implémentation, avec une documentation exploitable."],
+];
 
-export default function MethodPage() { return <PageShell active="Ma méthode"><section className="method-intro"><Eyebrow>Clarté · Cohérence · Vérification</Eyebrow><h1>Comment je<br /><em>travaille.</em></h1><p className="lead">Une démarche qui relie le problème au logiciel, puis le logiciel à son usage.</p><div className="method-orbit"><span>USAGE</span><b>✳</b><span>SYSTÈME</span></div></section><section className="method-detail section-wash"><div className="section-container"><Eyebrow>Une progression simple</Eyebrow><h2>Comprendre.<br />Structurer. Construire.</h2><div className="method-steps large">{steps.map(([n,t,d])=><article key={n}><span>{n}</span><div><h3>{t}</h3><p>{d}</p></div><b>↗</b></article>)}</div></div></section><section className="expertise"><div className="section-container"><Eyebrow>Ce que je fais</Eyebrow><h2>Des compétences<br />au service du système.</h2><div className="expertise-grid">{fields.map(([t,d],i)=><article key={t}><span>0{i+1}</span><h3>{t}</h3><p>{d}</p><b>↗</b></article>)}</div></div></section><section className="method-note"><Eyebrow>Clarté · Cohérence · Vérification</Eyebrow><h2>Le bon niveau de solution,<br />pour le bon usage.</h2><p>Les choix techniques s’évaluent dans leur contexte : le besoin couvert, les contraintes assumées et ce qui peut être vérifié.</p><ActionLink href="/contact">Parlons de votre projet</ActionLink></section></PageShell>; }
+export default function MethodPage() {
+  return <PageShell active="Ma méthode">
+    <section className="method-intro"><div className="section-container"><Eyebrow>Clarté · Cohérence · Vérification</Eyebrow><h1>L’intention donne<br />le cap au code.</h1><p className="lead">Un chemin de travail lisible pour relier le besoin au fonctionnement réel du système.</p></div></section>
+    <section className="method-roadmap-section"><div className="section-container method-roadmap-layout"><div className="method-roadmap-intro"><Eyebrow>Comment je travaille</Eyebrow><h2>Du besoin<br />à la livraison.</h2><p>Comprendre avant de construire. Clarifier les règles. Puis vérifier ce qui compte dans l’usage.</p><Image src="/figma-assets/8-83.svg" alt="Illustration d’une personne qui lit" width={330} height={247.5} /></div><MethodRoadmap /></div><p className="method-handnote section-container">Chaque étape sert l’usage.</p></section>
+    <section className="expertise expertise-dark"><div className="section-container"><Eyebrow dark>Ce que je fais</Eyebrow><h2>Des systèmes pensés<br />pour être utilisés.</h2><p className="expertise-intro">Une dominante backend et API, avec une pratique du web, d’Android et de l’exploitation.</p><div className="expertise-grid">{fields.map(([title,description],index)=><article key={title}><span>0{index+1}</span><h3>{title}</h3><p>{description}</p></article>)}</div></div></section>
+  </PageShell>;
+}
