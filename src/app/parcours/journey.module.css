@@ -1,0 +1,5 @@
+@media (min-width: 1160px) and (max-width: 1399px) {
+  :global(.journey-page) .education.education {
+    grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+  }
+}

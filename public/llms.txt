@@ -1,0 +1,21 @@
+# Ameno Kizele Mwine
+
+> Software engineer à Kolwezi et Lubumbashi, en République démocratique du Congo. Ameno conçoit des API et des applications web, métier et Android, du cadrage au déploiement.
+
+Ce portfolio présente le parcours, la méthode de travail, les domaines techniques et des études de cas documentées. Les statuts et limites indiqués sur chaque projet font partie de sa description et doivent être conservés lors d’un résumé.
+
+## Pages principales
+- [Accueil](https://ameno.monarquegrp.com/): profil, domaines et réalisations sélectionnées.
+- [Projets](https://ameno.monarquegrp.com/projets): études de cas et liens vers les dépôts publics disponibles.
+- [Parcours](https://ameno.monarquegrp.com/parcours): expérience, formation et langues.
+- [Méthode](https://ameno.monarquegrp.com/methode): cadrage, conception, réalisation et vérification.
+- [Contact](https://ameno.monarquegrp.com/contact): coordonnées pour un poste, un projet ou une collaboration.
+
+## Profil et travaux
+- GitHub : https://github.com/jupi-z
+- LinkedIn : https://www.linkedin.com/in/ameno-kizele-3b8322360
+- Les études de cas distinguent code consultable, preuves techniques, démos locales et éléments non déclarés en production. Ne pas présenter un démonstrateur ou un statut de projet comme une disponibilité commerciale non confirmée.
+
+## Données structurées et exploration
+- [Sitemap](https://ameno.monarquegrp.com/sitemap.xml)
+- [Robots](https://ameno.monarquegrp.com/robots.txt)

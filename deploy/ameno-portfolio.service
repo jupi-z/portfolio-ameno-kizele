@@ -1,0 +1,24 @@
+[Unit]
+Description=Ameno Kizele portfolio (Next.js standalone)
+After=network.target
+
+[Service]
+Type=simple
+User=ameno-portfolio
+Group=ameno-portfolio
+WorkingDirectory=/var/www/ameno.monarquegrp.com/current
+Environment=NODE_ENV=production
+Environment=HOSTNAME=127.0.0.1
+Environment=PORT=3212
+ExecStart=/usr/bin/node /var/www/ameno.monarquegrp.com/current/server.js
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+UMask=0027
+ReadWritePaths=/var/www/ameno.monarquegrp.com/current/.next/cache
+
+[Install]
+WantedBy=multi-user.target

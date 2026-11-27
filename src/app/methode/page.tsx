@@ -1,5 +1,19 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { Eyebrow, MethodRoadmap, PageShell } from "@/components/site";
+
+export const metadata: Metadata = {
+  title: "Méthode de développement logiciel",
+  description:
+    "La méthode d’Ameno Kizele pour cadrer un besoin, structurer les règles métier, concevoir les API et applications, puis vérifier et livrer.",
+  alternates: { canonical: "/methode" },
+  openGraph: {
+    title: "Méthode — Ameno Kizele Mwine",
+    description: "Du cadrage du besoin à la livraison vérifiée de logiciels métier.",
+    url: "/methode",
+  },
+  twitter: { title: "Méthode — Ameno Kizele Mwine" },
+};
 
 const fields = [
   ["Backend & API", "TypeScript, NestJS, Express et Kotlin/Ktor. Des contrats explicites et des règles métier."],
