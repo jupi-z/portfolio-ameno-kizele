@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Caveat, Manrope, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import "../globals.css";
 import { RouteScrollReset } from "@/components/route-scroll-reset";
@@ -18,6 +19,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
 };
 
-export default function EnglishLayout({ children }: LayoutProps<"/en">) {
+export default function EnglishLayout({ children }: { children: ReactNode }) {
   return <html lang="en" className={`${manrope.variable} ${dmSans.variable} ${caveat.variable} ${ibmPlexMono.variable}`}><body><RouteScrollReset />{children}</body></html>;
 }

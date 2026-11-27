@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 import "../globals.css";
 import { Caveat, Manrope, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import { RouteScrollReset } from "@/components/route-scroll-reset";
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#14171c" };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
       <html lang="fr" className={`${manrope.variable} ${dmSans.variable} ${caveat.variable} ${ibmPlexMono.variable}`}>
       <body><RouteScrollReset />{children}</body>
