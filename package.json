@@ -6,19 +6,29 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "pretest": "node scripts/prepare-standalone.mjs",
+    "pretest:e2e": "node scripts/prepare-standalone.mjs",
+    "test": "tsx --test tests/unit/contact-delivery.test.ts && playwright test",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "next": "16.4.6",
+    "nodemailer": "^10.6.1",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.1",
+    "@playwright/test": "^1.65.1",
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

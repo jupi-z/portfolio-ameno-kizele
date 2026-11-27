@@ -9,7 +9,20 @@ npm install
 npm run dev
 ```
 
-Pages principales : accueil, projets, six études de cas, parcours, méthode et contact. Le formulaire prépare un e-mail dans le logiciel de messagerie de la personne ; il ne transmet pas les données à un serveur.
+Pages principales : accueil, projets, six études de cas, parcours, méthode et contact en français et en anglais (`/en`). Le formulaire utilise un transport SMTP côté serveur lorsqu’il est configuré et propose un e-mail prérempli sans prétendre qu’il a été envoyé autrement. Lire [`docs/CONTACT_CONFIGURATION.md`](docs/CONTACT_CONFIGURATION.md) avant de configurer l’envoi et [`docs/PORTFOLIO_EVIDENCE_POLICY.md`](docs/PORTFOLIO_EVIDENCE_POLICY.md) pour les règles sur les preuves des études de cas.
+
+## Quality checks
+
+```bash
+npm ci
+npm run lint
+npm run typecheck
+npm run build
+npx playwright install chromium
+npm test
+```
+
+`npm test` runs mocked contact-delivery unit checks and Playwright browser checks against the standalone production build on port 3100. The suite does not send email. CI runs the same checks for the pull request.
 
 ## Structure
 
