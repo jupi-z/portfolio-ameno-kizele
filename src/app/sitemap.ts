@@ -23,5 +23,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
       changeFrequency: "yearly" as const,
     })),
+    ...pages.map(([path, priority, changeFrequency]) => ({
+      url: `${siteUrl}/en${path === "/" ? "" : path === "/projets" ? "/projects" : path === "/parcours" ? "/career" : path === "/methode" ? "/method" : path}`,
+      priority,
+      changeFrequency,
+    })),
+    ...projects.map(({ slug }) => ({
+      url: `${siteUrl}/en/projects/${slug}`,
+      priority: 0.7,
+      changeFrequency: "yearly" as const,
+    })),
   ];
 }

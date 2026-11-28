@@ -2,7 +2,10 @@ import { ImageResponse } from "next/og";
 
 export const socialImageSize = { width: 1200, height: 630 };
 
-export function createSocialCard() {
+export function createSocialCard(locale: "fr" | "en" = "fr") {
+  const copy = locale === "fr"
+    ? { role: "SOFTWARE ENGINEER · RDC", first: "Du métier au", second: "logiciel.", areas: "API · Web · Android · Systèmes métier", place: <>Kolwezi<br />Lubumbashi<br />RDC</> }
+    : { role: "SOFTWARE ENGINEER · DR CONGO", first: "From business to", second: "software.", areas: "APIs · Web · Android · Business systems", place: <>Kolwezi<br />Lubumbashi<br />DR Congo</> };
   return new ImageResponse(
     <div
       style={{
@@ -34,17 +37,17 @@ export function createSocialCard() {
             <span>AMENO KIZELE MWINE</span>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-            <div style={{ display: "flex", color: "#285ce6", fontSize: 25, fontWeight: 700, letterSpacing: 3 }}>SOFTWARE ENGINEER · RDC</div>
+            <div style={{ display: "flex", color: "#285ce6", fontSize: 25, fontWeight: 700, letterSpacing: 3 }}>{copy.role}</div>
             <div style={{ display: "flex", flexDirection: "column", fontSize: 64, fontWeight: 700, lineHeight: 1.08, letterSpacing: -2 }}>
-              <span>Du métier au</span>
-              <span>logiciel.</span>
+              <span>{copy.first}</span>
+              <span>{copy.second}</span>
             </div>
           </div>
-          <div style={{ display: "flex", fontSize: 22, color: "#616872" }}>API · Web · Android · Systèmes métier</div>
+          <div style={{ display: "flex", fontSize: 22, color: "#616872" }}>{copy.areas}</div>
         </div>
         <div style={{ width: 250, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 28, borderRadius: 26, background: "#285ce6", color: "#fff" }}>
           <span style={{ display: "flex", fontSize: 16, letterSpacing: 2 }}>PORTFOLIO</span>
-          <span style={{ display: "flex", fontSize: 26, fontWeight: 700 }}>Kolwezi<br />Lubumbashi<br />RDC</span>
+          <span style={{ display: "flex", fontSize: 26, fontWeight: 700 }}>{copy.place}</span>
           <span style={{ display: "flex", width: 26, height: 26, borderRadius: 999, background: "#f4864b" }} />
         </div>
       </div>

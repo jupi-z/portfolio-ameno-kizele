@@ -1,0 +1,8 @@
+import Image from "next/image";
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import { ContactForm } from "@/components/contact-form";
+import { Eyebrow, PageShell } from "@/components/site";
+import styles from "../../(fr)/contact/contact-responsive.module.css";
+export const metadata: Metadata = { title: "Contact Ameno Kizele Mwine", description: "Contact Ameno Kizele in Kolwezi or Lubumbashi about a role, software project or collaboration.", alternates: { canonical: "/en/contact", languages: { fr: "/contact", en: "/en/contact", "x-default": "/contact" } } };
+export default function ContactPage() { return <PageShell locale="en" showInvitation={false}><section className="contact-intro"><Eyebrow>Hiring · Project · Collaboration</Eyebrow><h1>Shall we build<br />what comes next?</h1><p>A team to join or a project to build: let’s discuss the context and next steps.</p></section><section className={`contact-layout section-wash ${styles.contactResponsive}`}><div className="contact-direct"><Image src="/figma-assets/asterisk-orange.svg" alt="" width={64} height={64} /><h2>Hello,<br />I’m Ameno.</h2><p>Kolwezi · Lubumbashi / DR Congo</p><a href="mailto:ameno.aton4@gmail.com">ameno.aton4@gmail.com <span aria-hidden="true">↗</span></a><a href="tel:+243843187952">+243 843 187 952 <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/ameno-kizele-3b8322360" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div><Suspense fallback={<div className="contact-form" aria-hidden="true" />}><ContactForm locale="en" /></Suspense></section></PageShell>; }
