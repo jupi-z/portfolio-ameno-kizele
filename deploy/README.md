@@ -13,5 +13,15 @@ Open Graph image and `/projets` before considering the release active. Keep the
 previous release so `current` can be atomically pointed back if a smoke check
 fails.
 
+SMTP settings are read by systemd from `/etc/ameno-portfolio/contact.env`,
+outside the release directory and repository. The optional `EnvironmentFile`
+keeps the site startable before mail is configured; contact submissions then
+use the explicit prepared-email fallback. Create the directory and file as
+`root:root` with mode `0700` and `0600`, respectively, and edit it with
+`sudoedit` after rotating the mailbox password. Never pass the password as a
+shell argument, commit it, or print the service environment. Restart the unit
+after saving, then verify delivery to the main inbox and both configured CC
+addresses before declaring mail ready.
+
 The Nginx template is `ameno.monarquegrp.com.conf`; the service definition is
 `ameno-portfolio.service`. Neither template contains account credentials.

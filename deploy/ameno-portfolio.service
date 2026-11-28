@@ -7,6 +7,7 @@ Type=simple
 User=ameno-portfolio
 Group=ameno-portfolio
 WorkingDirectory=/var/www/ameno.monarquegrp.com/current
+EnvironmentFile=-/etc/ameno-portfolio/contact.env
 Environment=NODE_ENV=production
 Environment=HOSTNAME=127.0.0.1
 Environment=PORT=3212
