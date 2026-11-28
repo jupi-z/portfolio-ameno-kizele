@@ -146,7 +146,7 @@
 }
 @media(max-width:760px){
  .site-header{box-sizing:border-box;height:76px}
- .contact-intro{height:320px;padding:24px;gap:32px}
+ .contact-intro{height:auto;min-height:320px;padding:24px;gap:32px}
  .contact-intro h1{font-size:36px;line-height:44px;letter-spacing:-1.7px}
  .contact-intro>p{font-size:20px;line-height:30px}
  .contact-layout{height:1200px;padding:24px;grid-template-columns:minmax(0,1fr);gap:40px}
