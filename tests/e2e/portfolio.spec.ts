@@ -63,18 +63,25 @@ test("mobile navigation opens and remains keyboard accessible", async ({ page })
 });
 
 test("contact endpoint validates input and honestly reports missing SMTP", async ({ request }) => {
-  const invalid = await request.post("/api/contact", { data: { name: "", email: "bad", message: "x" } });
+  const validPayload = { name: "QA", email: "qa@example.com", phone: "+243 81 234 5678", subject: "Test", message: "A synthetic message long enough for validation.", locale: "en" };
+  const invalid = await request.post("/api/contact", { data: { ...validPayload, phone: "", message: "x" } });
   expect(invalid.status()).toBe(400);
-  const tooLarge = await request.post("/api/contact", { data: { name: "QA", email: "qa@example.com", message: "x".repeat(9_000) } });
+  const missingSubject = await request.post("/api/contact", { data: { ...validPayload, subject: "" } });
+  expect(missingSubject.status()).toBe(400);
+  const invalidPhone = await request.post("/api/contact", { data: { ...validPayload, phone: "0812345678" } });
+  expect(invalidPhone.status()).toBe(400);
+  const shortMessage = await request.post("/api/contact", { data: { ...validPayload, message: "Only 29 characters, short." } });
+  expect(shortMessage.status()).toBe(400);
+  const tooLarge = await request.post("/api/contact", { data: { ...validPayload, message: "x".repeat(9_000) } });
   expect(tooLarge.status()).toBe(413);
-  const unconfigured = await request.post("/api/contact", { data: { name: "QA", email: "qa@example.com", subject: "Test", message: "This is a local automated test message." } });
+  const unconfigured = await request.post("/api/contact", { data: validPayload });
   expect(unconfigured.status()).toBe(503);
   expect((await unconfigured.json()).error).toBe("transport_not_configured");
 });
 
 test("contact endpoint applies its per-process abuse limit", async ({ request }) => {
   const headers = { "x-forwarded-for": "203.0.113.123, 198.51.100.67" };
-  const payload = { name: "QA", email: "qa@example.com", subject: "Test", message: "Synthetic anti-abuse limit scenario." };
+  const payload = { name: "QA", email: "qa@example.com", phone: "+243 81 234 5678", subject: "Test", message: "Synthetic anti-abuse limit scenario.", locale: "en" };
   for (let attempt = 0; attempt < 5; attempt++) {
     const response = await request.post("/api/contact", { headers, data: payload });
     expect(response.status()).toBe(503);
@@ -93,11 +100,35 @@ test("contact form prevents a double submission", async ({ page }) => {
   await page.goto("/en/contact");
   await page.getByLabel("Your name").fill("Automated test");
   await page.getByLabel("Your email").fill("qa@example.test");
+  await page.getByLabel("Your phone number").fill("+243 81 234 5678");
+  await page.getByLabel("Subject").fill("Automated test request");
   await page.getByLabel("Your message").fill("This is a synthetic Playwright message for the local form.");
   const button = page.getByRole("button", { name: /Send message/ });
   await Promise.allSettled([button.click(), button.click()]);
   await expect(page.getByRole("status")).toContainText("Your message has been sent.");
   expect(submissions).toBe(1);
+});
+
+test("contact form requires every visible field, an international phone and 30 message characters", async ({ page }) => {
+  await page.goto("/contact");
+  const required = await page.locator("#contact-form input:not([name=website]), #contact-form textarea").evaluateAll((fields) => fields.map((field) => ({ name: (field as HTMLInputElement).name, required: (field as HTMLInputElement).required, minLength: (field as HTMLTextAreaElement).minLength })));
+  const localPhone = page.getByLabel("Votre numéro de téléphone");
+  await localPhone.fill("0812345678");
+  const localPhoneState = await localPhone.evaluate((field: HTMLInputElement) => ({ valid: field.checkValidity(), value: field.value, pattern: field.pattern, patternMismatch: field.validity.patternMismatch }));
+  const localPhoneRejected = !localPhoneState.valid;
+  await localPhone.fill("+243 81 234 5678");
+  const internationalPhoneAccepted = await localPhone.evaluate((field: HTMLInputElement) => field.checkValidity());
+  const message = page.getByLabel("Votre message");
+  await message.fill("12345678901234567890123456789");
+  const shortMessageRejected = await message.evaluate((field: HTMLTextAreaElement) => !field.checkValidity());
+  await message.fill("123456789012345678901234567890");
+  const minimumMessageAccepted = await message.evaluate((field: HTMLTextAreaElement) => field.checkValidity());
+  expect(required.every((field) => field.required)).toBe(true);
+  expect(required.find((field) => field.name === "message")?.minLength, JSON.stringify(required)).toBe(30);
+  expect(localPhoneRejected, JSON.stringify(localPhoneState)).toBe(true);
+  expect(internationalPhoneAccepted).toBe(true);
+  expect(shortMessageRejected).toBe(true);
+  expect(minimumMessageAccepted).toBe(true);
 });
 
 test("CV request is prefilled without a fabricated CV download", async ({ page }) => {

@@ -291,6 +291,9 @@
 .contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #285ce61a}
 .contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--muted);opacity:1}
 .contact-form .form-note{color:var(--muted);font-size:14px;line-height:22px;margin:0}
+.contact-form .form-required-note{margin:-4px 0 0;font-size:13px}
+.contact-message-hint{color:var(--muted);font-size:12px;line-height:18px}
+.contact-form input:invalid:not(:placeholder-shown),.contact-form textarea:invalid:not(:placeholder-shown){border-color:#c64040}
 .contact-form .pill-button{width:300px}
 .contact-form .pill-blue .arrow-disc{background:#fff;color:var(--blue)}
 @media(max-width:1000px){.method-roadmap-layout{grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:40px}.roadmap-card{padding:18px;min-height:190px}.roadmap-card h3{font-size:21px}.roadmap-card p{font-size:12px}.contact-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:40px}}

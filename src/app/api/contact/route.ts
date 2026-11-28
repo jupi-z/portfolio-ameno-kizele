@@ -51,9 +51,12 @@ export async function POST(request: Request) {
 
   const name = plain(body.name, 120);
   const email = plain(body.email, 254);
-  const subject = plain(body.subject || "Portfolio contact", 160);
+  const phoneValue = plain(body.phone, 32);
+  const phone = phoneValue?.replace(/[\s().-]/g, "") ?? "";
+  const subject = plain(body.subject, 160);
   const message = typeof body.message === "string" ? body.message.trim() : "";
-  if (!name || !email || !subject || message.length < 10 || message.length > 5_000 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  const locale = body.locale === "en" ? "en" : body.locale === "fr" ? "fr" : null;
+  if (!name || !email || !phoneValue || !/^\+[1-9]\d{7,14}$/.test(phone) || !subject || !locale || message.length < 30 || message.length > 5_000 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   }
 
@@ -62,7 +65,7 @@ export async function POST(request: Request) {
   const ip = request.headers.get("x-forwarded-for")?.split(",").at(-1)?.trim() || "unknown";
   if (rateLimited(ip)) return NextResponse.json({ error: "unavailable" }, { status: 429 });
 
-  const delivery = await deliverContactMessage({ name, email, subject, message });
+  const delivery = await deliverContactMessage({ name, email, phone, subject, message, locale });
   if (delivery === "sent") return NextResponse.json({ ok: true });
   if (delivery === "not_configured") return NextResponse.json({ error: "transport_not_configured" }, { status: 503 });
   return NextResponse.json({ error: "unavailable" }, { status: delivery === "invalid_config" ? 503 : 502 });
